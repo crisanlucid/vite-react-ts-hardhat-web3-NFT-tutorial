@@ -23,3 +23,7 @@ coverage.json
 #Hardhat files
 cache
 artifacts
+coverage
+coverage.json
+typechain-types
+typechain

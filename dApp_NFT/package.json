@@ -1,0 +1,34 @@
+{
+  "name": "vite-react-ts-hardhat-web3-nft-tutorial",
+  "version": "1.0.0",
+  "description": "dApp Nft minter",
+  "repository": "https://github.com/crisanlucid/vite-react-ts-hardhat-web3-NFT-tutorial.git",
+  "author": "crisanlucid <Crisan Lucian>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^14.0.1",
+    "@types/ws": "^8.5.3",
+    "@vitejs/plugin-react": "^1.0.7",
+    "@vitest/ui": "latest",
+    "jsdom": "^19.0.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.0",
+    "vitest": "^0.8.1"
+  }
+}
