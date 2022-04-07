@@ -5,7 +5,7 @@ import { ethers } from 'hardhat';
 
 import { NFT, NFT__factory } from '../typechain';
 
-describe.only('Nft Contract', () => {
+describe('Nft Contract', () => {
   const baseTokenURI = 'ipfs://QmZbWNKJPAjxXuNFSEaksCJVd1M6DaKQViJBYPK2BdpDEP/';
   const MAX_SUPPLY = 100;
   let nftContract: NFT;
