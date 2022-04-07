@@ -15,7 +15,7 @@ contract NFT is ERC721Enumerable, Ownable {
     uint256 public constant MAX_SUPPLY = 100;
     uint256 public constant PRICE = 0.01 ether;
     uint256 public constant MAX_PER_MINT = 5;
-    uint256 private constant MAX_RESERVE_NFT = 10;
+    uint256 private constant MAX_RESERVE_NFT = 5;
 
     string public baseTokenURI;
 
