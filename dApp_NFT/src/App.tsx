@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import { Footer } from './components';
 import { NftPage } from './pages/Nft';
 
 const App: React.FC = () => {
@@ -11,6 +12,7 @@ const App: React.FC = () => {
           <Route path="/" element={<NftPage />} />
           <Route path="*" element={<main>Not Found 404!</main>} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
