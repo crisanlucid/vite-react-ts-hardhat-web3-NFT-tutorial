@@ -26,6 +26,8 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^14.0.1",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@types/tailwindcss": "^3.0.10",
     "@types/ws": "^8.5.3",
     "@vitejs/plugin-react": "^1.0.7",
