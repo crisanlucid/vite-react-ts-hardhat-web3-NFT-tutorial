@@ -1,5 +1,13 @@
 import React from 'react';
 
-export const MintCard: React.FC = () => {
+export interface IMintCardProps {
+  tokenId: string;
+  hasFavorite?: boolean;
+}
+
+export const MintCard: React.FC<IMintCardProps> = ({
+  tokenId,
+  hasFavorite = false
+}) => {
   return <>MintCard</>;
 };
