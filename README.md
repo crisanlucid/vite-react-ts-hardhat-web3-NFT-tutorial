@@ -94,6 +94,119 @@ yarn hardhat node
 
 You'll get a local blockchain, private keys, contracts deployed (from the `deploy` folder scripts), and an endpoint to potentially add to an EVM wallet.
 
+# Frontend
+
+```
+cd dApp_NFT
+```
+
+and
+
+```
+yarn && yarn dev
+```
+
+or
+
+```
+npm install && npm dev
+```
+
+2. Navigate and click NFT link
+
+3. Login with Metamask
+
+- install Metamask
+- log in
+- change Network: Rinkeby
+
+4. Click mint button and appove from Metamask
+
+# BONUS:
+
+## HOW TO Install Tailwind (\*\*)
+
+```
+cd dApp_NFT
+```
+
+1. Setup Dependecies
+
+```
+yarn add -D tailwindcss postcss autoprefixer @tailwindcss/forms
+npx tailwindcss init
+```
+
+or
+
+```
+npm install -D tailwindcss postcss autoprefixer
+```
+
+2. Create file tailwind.config.cjs ; cjs - common js file
+
+```
+module.exports = {
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  mode: 'jit',
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    fontFamily: {
+      display: ['Open Sans', 'sans-serif'],
+      body: ['Open Sans', 'sans-serif']
+    },
+    extend: {
+      screens: {
+        mf: '990px'
+      },
+      keyframes: {
+        'slide-in': {
+          '0%': {
+            '-webkit-transform': 'translateX(120%)',
+            transform: 'translateX(120%)'
+          },
+          '100%': {
+            '-webkit-transform': 'translateX(0%)',
+            transform: 'translateX(0%)'
+          }
+        }
+      },
+      animation: {
+        'slide-in': 'slide-in 0.5s ease-out'
+      }
+    }
+  },
+  variants: {
+    extend: {}
+  },
+  plugins: [require('@tailwindcss/forms')]
+};
+
+```
+
+3. Create a file postcss.config.cjs
+
+with the config:
+
+```
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+```
+
+4. Update dApp_NFT\src\index.css
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+```
+
 # Performance optimizations
 
 For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
