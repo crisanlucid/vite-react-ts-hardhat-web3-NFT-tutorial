@@ -5,6 +5,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { SiEthereum } from 'react-icons/si';
 
 import {
+  IFormData,
   ITransactionContextProps,
   TransactionContext
 } from '../context/TransactionContext';
@@ -18,13 +19,6 @@ const companyCommonStyles =
 interface IWelcomeProps {
   showForm?: boolean;
   showMint?: boolean;
-}
-
-interface IFormData {
-  addressTo: string;
-  amount: string;
-  keyword: string;
-  message: string;
 }
 
 export const sendValidTransaction = (

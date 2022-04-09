@@ -1,14 +1,14 @@
 import { ethers, utils } from 'ethers';
 import React, { useEffect, useState } from 'react';
 
-import { contractNFTAddress, contract_NFT_ABI } from '../utils/constants';
+import { contract_NFT_ABI, contractNFTAddress } from '../utils/constants';
 
 export const KEY_FAVORITELIST = 'favoritedHeartList';
 
-interface IFormDataProps {
+export interface IFormData {
   addressTo: string;
   amount: string;
-  keywords: string;
+  keyword: string;
   message: string;
 }
 
@@ -35,7 +35,7 @@ export interface ITransactionContextProps {
   currentAccount: string;
   isLoading: boolean;
   handleChange?: (e: any, name: string) => void;
-  formData: IFormDataProps;
+  formData: IFormData;
   mintToken: mintTokenType;
   nftListId: number[];
   nftTransferOnwnership: nftTransferOnwnershipType;
@@ -78,7 +78,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
   const [formData, setFormData] = useState({
     addressTo: '',
     amount: '',
-    keywords: '',
+    keyword: '',
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
