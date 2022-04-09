@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import {
+  ITransactionContextProps,
+  TransactionContext
+} from '../context/TransactionContext';
 import { MintCard } from './MintCard';
 import SkeletonCard from './SkeletonCard';
 
 const MintCardList: React.FC = () => {
-  const nftListId: string[] = [];
-  const nftListFavoriteIds: string[] = [];
-  const isLoadingNFT = false;
+  const { nftListId, nftListFavoriteIds, isLoadingNFT } = useContext(
+    TransactionContext
+  ) as ITransactionContextProps;
 
   const cardstyle = nftListId.length > 1 ? 'md:w-6/12 lg:w-4/12' : 'md:w-10/12';
 
@@ -15,8 +19,8 @@ const MintCardList: React.FC = () => {
       <div className={`px-3 w-full  ${cardstyle}`} key={`nft-${index}`}>
         <div className="bg-white overflow-hidden rounded-xl text-gray-500">
           <MintCard
-            tokenId={tokenId}
-            hasFavorite={nftListFavoriteIds.includes(String(tokenId))}
+            tokenId={tokenId.toString()}
+            hasFavorite={nftListFavoriteIds.includes(tokenId.toString())}
           />
         </div>
       </div>

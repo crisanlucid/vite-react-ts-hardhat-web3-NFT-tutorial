@@ -6,7 +6,7 @@ export const NftPage = () => {
     <div>
       <div className="gradient-bg-welcome">
         <Navbar />
-        <Welcome />
+        <Welcome showMint />
       </div>
       <section className="bg-opacity-50 bg-slate-500  flex w-full justify-center items-center">
         <div className="flex flex-col items-start justify-between md:p-20 py-12 px-4 max-w-6xl w-full">
