@@ -13,7 +13,7 @@ export interface IFormData {
   message: string;
 }
 
-enum ActionType {
+export enum ActionType {
   'REMOVE_ACTION',
   'ADD_ACTION'
 }

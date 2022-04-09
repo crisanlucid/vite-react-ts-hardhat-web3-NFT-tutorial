@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 
 import {
+  ActionType,
   ITransactionContextProps,
   TransactionContext
 } from '../context/TransactionContext';
@@ -30,9 +31,7 @@ export const MintCard: React.FC<IMintCardProps> = ({
   const [address, setAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const onFavoriteList = (tokenId: string, action: string) => {};
-
-  const { nftTransferOnwnership } = useContext(
+  const { nftTransferOnwnership, onFavoriteList } = useContext(
     TransactionContext
   ) as ITransactionContextProps;
 
@@ -42,7 +41,10 @@ export const MintCard: React.FC<IMintCardProps> = ({
     const isFavorite = !toggleFavorite;
 
     setToggleFavorite(isFavorite);
-    onFavoriteList(tokenId, isFavorite ? 'ADD_ACTION' : 'REMOVE_ACTION');
+    onFavoriteList(
+      tokenId,
+      isFavorite ? ActionType.ADD_ACTION : ActionType.REMOVE_ACTION
+    );
   };
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
