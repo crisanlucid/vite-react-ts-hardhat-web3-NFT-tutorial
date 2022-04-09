@@ -35,7 +35,7 @@ export interface ITransactionContextProps {
   transactions: any[];
   currentAccount: string;
   isLoading: boolean;
-  handleChange?: HandleChangeType;
+  handleChange: HandleChangeType;
   formData: IFormData;
   mintToken: mintTokenType;
   nftListId: number[];
@@ -90,6 +90,13 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
   const [nftListFavoriteIds, setNftListFavoriteIds] = useState(
     JSON.parse(localStorage.getItem(KEY_FAVORITELIST) || '') ?? []
   );
+
+  const handleChange: HandleChangeType = (e, name) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [name as string]: e.target.value
+    }));
+  };
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -241,6 +248,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
     connectWalletAndShowNFT,
     disconnectWallet,
     transactions,
+    handleChange,
     currentAccount,
     isLoading,
     formData,
