@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AiFillPlayCircle, AiOutlineClose } from 'react-icons/ai';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/logo.svg';
+import {
+  ITransactionContextProps,
+  TransactionContext
+} from '../context/TransactionContext';
 
 interface INavbarItem {
   title: string;
@@ -20,9 +24,8 @@ const NavbarItem: React.FC<INavbarItem> = ({ title, classProps }) => (
 const Navbar: React.FC = () => {
   const [toogleMenu, setToogleMenu] = useState(false);
 
-  const currentAccount = false;
-  const disconnectWallet = () => {};
-  const connectWalletAndShowNFT = () => {};
+  const { currentAccount, disconnectWallet, connectWalletAndShowNFT } =
+    useContext(TransactionContext) as ITransactionContextProps;
 
   const renderButton = () => {
     const isLogIn = !currentAccount;

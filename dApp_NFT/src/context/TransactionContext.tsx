@@ -24,7 +24,7 @@ type nftTransferOnwnershipType = (
 type onFavoriteListType = (id: string, action: ActionType) => Promise<void>;
 
 type mintTokenType = (n: number) => Promise<void | undefined>;
-interface ITransactionContextProps {
+export interface ITransactionContextProps {
   transactionCount?: string;
   connectWallet: () => Promise<void>;
 

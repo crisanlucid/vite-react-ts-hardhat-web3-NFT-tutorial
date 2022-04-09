@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React from 'react';
+import React, { useContext } from 'react';
 import { AiFillPlayCircle } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { SiEthereum } from 'react-icons/si';
 
+import {
+  ITransactionContextProps,
+  TransactionContext
+} from '../context/TransactionContext';
 import { Loader } from '.';
 import { Input } from './Input';
 import { MintSection } from './MintSection';
@@ -36,13 +40,16 @@ const Welcome: React.FC<IWelcomeProps> = ({
   showForm = false,
   showMint = false
 }) => {
-  const connectWalletAndShowNFT = () => {};
-  const connectWallet = () => {};
-  const currentAccount = '';
-  const formData = {} as IFormData;
-  const handleChange = () => {};
   const sentTransaction = () => {};
-  const isLoading = false;
+
+  const {
+    connectWalletAndShowNFT,
+    connectWallet,
+    currentAccount,
+    formData,
+    handleChange,
+    isLoading
+  } = useContext(TransactionContext) as ITransactionContextProps;
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
