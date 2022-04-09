@@ -1,5 +1,6 @@
 import { ethers, utils } from 'ethers';
 import React, { useEffect, useState } from 'react';
+import { HandleChangeType } from '../components/Input';
 
 import { contract_NFT_ABI, contractNFTAddress } from '../utils/constants';
 
@@ -34,7 +35,7 @@ export interface ITransactionContextProps {
   transactions: any[];
   currentAccount: string;
   isLoading: boolean;
-  handleChange?: (e: any, name: string) => void;
+  handleChange?: HandleChangeType;
   formData: IFormData;
   mintToken: mintTokenType;
   nftListId: number[];

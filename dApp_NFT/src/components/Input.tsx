@@ -1,11 +1,13 @@
 import React from 'react';
 
+export type HandleChangeType = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  name: string | undefined
+) => void | undefined;
+
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    name: string | undefined
-  ) => void | undefined;
+  handleChange: HandleChangeType;
   styleCss?: string;
 }
 export const Input: React.FC<InputProps> = ({
