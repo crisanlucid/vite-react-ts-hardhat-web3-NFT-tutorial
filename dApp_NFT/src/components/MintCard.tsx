@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useEffect, useState } from 'react';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import React, { useContext, useEffect, useState } from 'react';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
+
+import {
+  ITransactionContextProps,
+  TransactionContext
+} from '../context/TransactionContext';
 
 export interface IMintCardProps {
   tokenId: string;
@@ -25,8 +30,11 @@ export const MintCard: React.FC<IMintCardProps> = ({
   const [address, setAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const nftTransferOnwnership = (a: any, id: any) => {};
   const onFavoriteList = (tokenId: string, action: string) => {};
+
+  const { nftTransferOnwnership } = useContext(
+    TransactionContext
+  ) as ITransactionContextProps;
 
   const [toggleFavorite, setToggleFavorite] = useState(hasFavorite);
 
