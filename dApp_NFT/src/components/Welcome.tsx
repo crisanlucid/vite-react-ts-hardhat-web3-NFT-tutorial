@@ -12,6 +12,7 @@ import {
 import { Loader } from '.';
 import { Input } from './Input';
 import { MintSection } from './MintSection';
+import { shortAddress } from '../utils/Address';
 
 const companyCommonStyles =
   'min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white';
@@ -105,7 +106,7 @@ const Welcome: React.FC<IWelcomeProps> = ({
               </div>
               <div>
                 <p className="text-white font-light text-sm">
-                  {currentAccount}
+                  {shortAddress(currentAccount)}
                 </p>
                 <p className="text-white font-semibold text-lg mt-1">
                   Ethereum
