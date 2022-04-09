@@ -207,6 +207,37 @@ module.exports = {
 
 ```
 
+## HOw TO put API into Frontend App
+
+1. compile the contracts from root (outside of dAppp_NFT)
+
+```
+yarn compile
+```
+
+or
+
+```
+npm compile
+```
+
+2. Copy JSON file from _artifacts/contracts/NFT.sol/NFT.json_
+
+```
+cp artifacts/contracts/NFT.sol/NFT.json dApp_NFT/src/utils/NFT.contract.json
+```
+
+3. create a file constants.ts in ./dApp_NFT/src/utils
+
+```
+import nft from './NFT.contract.json';
+
+// NFT contract goes here
+export const contractNFTAddress = '';//copy the contract address when you deploy Smart Contract
+export const contract_NFT_ABI = nft.abi;
+
+```
+
 # Performance optimizations
 
 For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
