@@ -10,6 +10,7 @@ const App: React.FC = () => {
       <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<NftPage />} />
+          <Route path="/nft" element={<NftPage />} />
           <Route path="*" element={<main>Not Found 404!</main>} />
         </Routes>
         <Footer />
