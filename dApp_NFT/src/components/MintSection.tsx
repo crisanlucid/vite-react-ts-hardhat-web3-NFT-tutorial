@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { BigNumber } from 'ethers';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
+import {
+  ITransactionContextProps,
+  TransactionContext
+} from '../context/TransactionContext';
 import { HandleChangeType, Input } from './Input';
 import Loader from './Loader';
 
 const MINT_PAY = 0.02;
 export const MintSection: React.FC = () => {
   const [counter, setCounter] = useState(0);
-  const { isLoading, mintToken } = {
-    isLoading: false,
-    mintToken: async (n: any) => {}
-  };
+  const { isLoading, mintToken } = useContext(
+    TransactionContext
+  ) as ITransactionContextProps;
 
   const handleChange: HandleChangeType = (e, name) => {
     // todo: inform delegation
