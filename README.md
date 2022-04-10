@@ -116,15 +116,30 @@ npm install && npm dev
 
 3. Login with Metamask
 
-- install Metamask
-- log in
-- change Network: Rinkeby
+   - install [Metamask](https://metamask.io/)
+   - log in
+   - change Network: Rinkeby
+   - add some fake [Eth](https://faucets.chain.link/rinkeby)
 
 4. Click mint button and appove from Metamask
 
+## Other stuff
+
+check tests
+
+```
+yarn test
+```
+
+or
+
+```
+npm test
+```
+
 # BONUS:
 
-## HOW TO Install Tailwind (\*\*)
+## HOW TO Install Tailwind)
 
 ```
 cd dApp_NFT
