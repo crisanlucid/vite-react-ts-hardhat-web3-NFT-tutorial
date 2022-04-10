@@ -88,7 +88,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
   const [transactions, setTransactions] = useState([]);
   const [nftListId, setNftListId] = useState([]);
   const [nftListFavoriteIds, setNftListFavoriteIds] = useState(
-    JSON.parse(localStorage.getItem(KEY_FAVORITELIST) || '') ?? []
+    JSON.parse(localStorage.getItem(KEY_FAVORITELIST) || '[]')
   );
 
   const handleChange: HandleChangeType = (e, name) => {

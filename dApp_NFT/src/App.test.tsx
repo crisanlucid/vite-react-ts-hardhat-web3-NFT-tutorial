@@ -1,25 +1,39 @@
-import { describe, expect, it } from "vitest";
-import { render, screen, userEvent } from "../testUtils";
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import App from "./App";
+import { render } from '../testUtils';
+import App from './App';
+import { TransactionProvider } from './context/TransactionContext';
 
-describe("Simple working test", () => {
-  it("the title is visible", () => {
-    render(<App />);
-
-    const welcomeText = screen.getByText(/Hello Vite \+ React!/i);
-
-    screen.debug(welcomeText);
-
-    expect(screen.getByText(/Hello Vite \+ React!/i)).toBeInTheDocument();
+describe('<App />', () => {
+  const jsdomAlert = window.alert;
+  beforeEach(() => {
+    window.alert = vi.fn(() => {
+      throw new Error('error');
+    });
+    window.ethereum = {
+      request: vi.fn((method: any) => Promise.resolve([]))
+    };
+  });
+  afterEach(() => {
+    window.alert = jsdomAlert;
   });
 
-  it("should increment count on click", async () => {
-    render(<App />);
+  const renderApp = () =>
+    render(
+      <TransactionProvider>
+        <App />
+      </TransactionProvider>
+    );
 
-    userEvent.click(screen.getByRole("button"));
+  it('Renders <App /> component correctly', () => {
+    const { getByText } = renderApp();
 
-    const count = await screen.findByText(/count is: 1/i);
-    expect(count.textContent).to.match(/1/);
+    const sendCryptoText = getByText(/Send Crypto/i);
+    const btnConnect = getByText(/Connect Wallet/i);
+    const messageFooter = getByText(/info @ topcraftcrypto.com/i);
+
+    expect(sendCryptoText).toBeInTheDocument();
+    expect(btnConnect).toBeInTheDocument();
+    expect(messageFooter).toBeInTheDocument();
   });
 });
