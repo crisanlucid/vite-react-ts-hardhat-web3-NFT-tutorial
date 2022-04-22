@@ -9,10 +9,10 @@ import {
   ITransactionContextProps,
   TransactionContext
 } from '../context/TransactionContext';
-import { Loader } from '.';
-import { Input } from './Input';
-import { MintSection } from './MintSection';
 import { shortAddress } from '../utils/Address';
+import { Input } from './Input';
+import { Loader } from './Loader';
+import { MintSection } from './MintSection';
 
 const companyCommonStyles =
   'min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white';
