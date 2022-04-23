@@ -5,7 +5,7 @@ import {
   TransactionContext
 } from '../context/TransactionContext';
 import { MintCard } from './MintCard';
-import SkeletonCard from './SkeletonCard';
+import { SkeletonCard } from './SkeletonCard';
 
 const MintCardList: React.FC = () => {
   const { nftListId, nftListFavoriteIds, isLoadingNFT } = useContext(

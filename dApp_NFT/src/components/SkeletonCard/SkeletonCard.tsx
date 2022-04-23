@@ -10,6 +10,7 @@ const SkeletonCard: React.FC = () => {
         <div
           className={`px-3 w-full  md:w-6/12 lg:w-4/12`}
           key={`nft-${index}`}
+          role="listitem"
         >
           <div className="bg-white overflow-hidden rounded-xl text-gray-500">
             <Skeleton
