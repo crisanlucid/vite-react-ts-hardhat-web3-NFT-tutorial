@@ -4,7 +4,6 @@
       "useDefineForClassFields": true,
       "lib": ["DOM", "DOM.Iterable", "ESNext"],
       "allowJs": false,
-      "skipLibCheck": false,
       "esModuleInterop": false,
       "allowSyntheticDefaultImports": true,
       "strict": true,
@@ -13,10 +12,13 @@
       "moduleResolution": "Node",
       "resolveJsonModule": true,
       "isolatedModules": true,
+      "noImplicitAny": false,
+      "skipLibCheck": true,
       "noEmit": true,
-      "jsx": "react-jsx"
+      "jsx": "react-jsx",
+      "types": ["vitest/globals"]
     },
-    "include": ["src"],
+    "include": ["./src"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }
   

@@ -1,8 +1,7 @@
-import { ethers, utils } from 'ethers';
+import { utils } from 'ethers';
 import React, { useEffect, useState } from 'react';
-import { HandleChangeType } from '../components/Input';
 
-import { contract_NFT_ABI, contractNFTAddress } from '../utils/constants';
+import { HandleChangeType } from '../components/Input';
 
 export const KEY_FAVORITELIST = 'favoritedHeartList';
 
@@ -55,25 +54,16 @@ declare global {
 }
 
 /*global window, localStorage, alert*/
-const { ethereum } = window;
+
 const delay = (ms = 10000) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const getNFTContract = () => {
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
-
-  const transactionContract = new ethers.Contract(
-    contractNFTAddress,
-    contract_NFT_ABI,
-    signer
-  );
-
-  return transactionContract;
+type TransactionProviderProps = {
+  children: React.ReactNode;
+  transactionService: any;
 };
-
-type TransactionProviderProps = { children: React.ReactNode };
 export const TransactionProvider: React.FC<TransactionProviderProps> = ({
-  children
+  children,
+  transactionService
 }) => {
   const [currentAccount, setCurrentAccount] = useState('');
   const [formData, setFormData] = useState({
@@ -99,10 +89,11 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
   };
 
   const checkIfWalletIsConnected = async () => {
+    const ethService = window.ethereum;
     try {
-      if (!ethereum) alert('Install Metamask in browser!');
-
-      const accounts = await ethereum.request({ method: 'eth_accounts' });
+      if (!ethService) alert('Install Metamask in browser!');
+      // console.log('======', ethService);
+      const accounts = await ethService.request({ method: 'eth_accounts' });
 
       if (accounts.lenght) {
         setCurrentAccount(accounts[0]);
@@ -111,44 +102,52 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
       }
       console.log(accounts);
     } catch (error) {
-      console.log(error);
-      throw new Error('No ethereum object...');
+      // console.log('========', error);
+      // throw new Error('No ethereum object...');
     }
   };
 
   const connectWallet = async () => {
+    const { ethereum } = window;
+    // console.log('I have wallet...');
     try {
       if (!ethereum) alert('Install Metamask in browser!');
 
+      // console.log(window.ethereum);
       const accounts = await ethereum.request({
         method: 'eth_requestAccounts'
       });
+
       setCurrentAccount(accounts[0]);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       throw new Error('No ethereum object...');
     }
   };
 
   const connectWalletAndShowNFT = async () => {
+    // console.log('I have NFT...');
+    const ethServiceNow = window.ethereum;
     try {
-      if (!ethereum) alert('Install Metamask in browser!');
+      if (!ethServiceNow) alert('Install Metamask in browser!');
 
-      const accounts = await ethereum.request({
+      // console.log('?????', ethServiceNow);
+      const accounts = await ethServiceNow.request({
         method: 'eth_requestAccounts'
       });
 
+      console.log({ accounts });
       const openAccount = accounts[0];
       setCurrentAccount(openAccount);
 
       setIsLoadingNFT(true);
-      const contract = getNFTContract();
+      const contract = transactionService.getNFTContract();
       const tokens = await contract.tokensOfOwner(openAccount);
 
       setNftListId(tokens);
       await delay(5000);
 
-      console.log('owner has tokens:', tokens);
+      // console.log('owner has tokens:', tokens);
       setIsLoadingNFT(false);
     } catch (error) {
       console.log(error);
@@ -162,6 +161,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
   };
 
   const mintToken: mintTokenType = async (countNFT) => {
+    const { ethereum } = window;
     try {
       if (!ethereum) {
         alert('Install Metamask in browser!');
@@ -173,7 +173,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
         return;
       }
 
-      const contract = getNFTContract();
+      const contract = transactionService.getNFTContract();
 
       const transactionHash = await contract.mintNFTs(countNFT, {
         value: utils.parseEther('0.03')
@@ -204,10 +204,11 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
     addressTo,
     id
   ) => {
+    const { ethereum } = window;
     try {
       if (!ethereum) alert('Install Metamask in browser!');
 
-      const contract = getNFTContract();
+      const contract = transactionService.getNFTContract();
 
       const txHash = await contract.transferFrom(currentAccount, addressTo, id);
       console.log('Result Transaction Transfer: ', txHash);

@@ -66,6 +66,7 @@ const Welcome: React.FC<IWelcomeProps> = ({
           </p>
           {!currentAccount && (
             <button
+              role="button"
               type="button"
               onClick={showMint ? connectWalletAndShowNFT : connectWallet}
               className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
