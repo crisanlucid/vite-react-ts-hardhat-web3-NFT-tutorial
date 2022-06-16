@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 
-const TransactionsCard: React.FC = () => {
+interface ITransactionsCard {
+  title?: string;
+}
+
+const TransactionsCard: React.FC = (props: ITransactionsCard) => {
   return <>TransactionCard</>;
 };
 
@@ -9,7 +14,7 @@ const Transactions: React.FC = () => {
     <div>
       <h1>Transactions</h1>
       <div>
-        {[].map((transaction, i) => (
+        {[].map((transaction: ITransactionsCard, i) => (
           <TransactionsCard key={i} {...transaction} />
         ))}
       </div>
