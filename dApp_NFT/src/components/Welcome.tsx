@@ -9,10 +9,10 @@ import {
   ITransactionContextProps,
   TransactionContext
 } from '../context/TransactionContext';
-import { Loader } from '.';
-import { Input } from './Input';
-import { MintSection } from './MintSection';
 import { shortAddress } from '../utils/Address';
+import { Input } from './Input';
+import { Loader } from './Loader';
+import { MintSection } from './MintSection';
 
 const companyCommonStyles =
   'min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white';
@@ -66,6 +66,7 @@ const Welcome: React.FC<IWelcomeProps> = ({
           </p>
           {!currentAccount && (
             <button
+              role="button"
               type="button"
               onClick={showMint ? connectWalletAndShowNFT : connectWallet}
               className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"

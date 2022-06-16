@@ -7,7 +7,7 @@ import {
   TransactionContext
 } from '../context/TransactionContext';
 import { HandleChangeType, Input } from './Input';
-import Loader from './Loader';
+import { Loader } from './Loader';
 
 const MINT_PAY = 0.02;
 export const MintSection: React.FC = () => {
